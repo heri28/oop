@@ -9,16 +9,18 @@ namespace Counter_Pulsa
     {
         public int deposit;
         public int depositTambah;
+        public string tanyaUlang;
+        public string jenisPulsa;
+        public int pulsaDibeli;
+        public int pulsaJual;
+        public int hargaPulsa;
+        public int laba;
+        public string hp;
 
         public void KartuAS()
         {
-            string jenisPulsa;
-            int pulsaDibeli;
-            int pulsaJual;
-            int hargaPulsa = 0;
-            int laba = 0;
-            string hp;
-            string tanyaUlang = "";
+            
+            
 
             //input deposit
             Console.Clear();
