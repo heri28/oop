@@ -7,97 +7,111 @@ namespace Counter_Pulsa
 {
     class Kartu_AS
     {
-        public bool cek2;
-        public struct hargaSatuan
-        {
-            public int pulsa5;
-            public int pulsa10;
-            public int pulsa20;
-            public int pulsa50;
-            public int pulsa100;
-        }
-        //public string hp;
-        public int harga, kembalian;
+        public int deposit;
+        public int depositTambah;
 
-        public Kartu_AS()
+        public void KartuAS()
         {
-            hargaSatuan a;
-            ConsoleKeyInfo key1;
+            string jenisPulsa;
+            int pulsaDibeli;
+            int pulsaJual;
+            int hargaPulsa = 0;
+            int laba = 0;
+            string hp;
+            string tanyaUlang = "";
+
+            //input deposit
+            Console.Clear();
+            Console.Write("Deposit Awal : Rp. ");
+            deposit = Convert.ToInt32(Console.ReadLine());
             do
             {
-               cek2 = true;                    
-                    Console.Clear();
-                    Stock stock = new Stock();
-                    stock.utama();
-                    Console.WriteLine("\nPilih Nominal Pulsa : ");
-                    Console.SetCursorPosition(5, 9); Console.WriteLine("1. 100.000");
-                    Console.SetCursorPosition(5, 11); Console.WriteLine("2. 50.000");
-                    Console.SetCursorPosition(5, 13); Console.WriteLine("3. 20.000");
-                    Console.SetCursorPosition(50, 9); Console.WriteLine("4. 10.000");
-                    Console.SetCursorPosition(50, 11); Console.WriteLine("5. 5.000");
-                    Console.SetCursorPosition(50, 13); Console.WriteLine("0. Kembali");
-                    Console.Write("\n\n\nPilihan: ");
-                    key1 = Console.ReadKey();
-                    switch (key1.KeyChar)
-                    {
-                        case '1':
-                            a.pulsa100 = 99000;
-                            Console.SetCursorPosition(5, 20); Console.WriteLine("Harga       = Rp. " + a.pulsa100);
-                            Console.SetCursorPosition(5, 21); Console.Write("Bayar       = Rp. ");
-                            harga = Convert.ToInt32(Console.ReadLine());
-                            kembalian = harga - a.pulsa100;
-                            Console.SetCursorPosition(5, 22); Console.WriteLine("Kembalian   = Rp. " + kembalian);
-                            Console.WriteLine("\nPulsa Berhasil Diisi Silakan Dicek");
-                            Console.ReadKey();
-                            break;
-                        case '2':
-                            a.pulsa50 = 49000;
-                            Console.SetCursorPosition(5, 20); Console.WriteLine("Harga       = Rp. " + a.pulsa50);
-                            Console.SetCursorPosition(5, 21); Console.Write("Bayar       = Rp. ");
-                            harga = Convert.ToInt32(Console.ReadLine());
-                            kembalian = harga - a.pulsa50;
-                            Console.SetCursorPosition(5, 22); Console.WriteLine("Kembalian   = Rp. " + kembalian);
-                            Console.WriteLine("\nPulsa Berhasil Diisi Silakan Dicek");
-                            Console.ReadKey();
-                            break;
-                        case '3':
-                            a.pulsa20 = 22000;
-                            Console.SetCursorPosition(5, 20); Console.WriteLine("Harga       = Rp. " + a.pulsa20);
-                            Console.SetCursorPosition(5, 21); Console.Write("Bayar       = Rp. ");
-                            harga = Convert.ToInt32(Console.ReadLine());
-                            kembalian = harga - a.pulsa20;
-                            Console.SetCursorPosition(5, 22); Console.WriteLine("Kembalian   = Rp. " + kembalian);
-                            Console.WriteLine("\nPulsa Berhasil Diisi Silakan Dicek");
-                            Console.ReadKey();
-                            break;
-                        case '4':
-                            a.pulsa10 = 11000;
-                            Console.SetCursorPosition(5, 20); Console.WriteLine("Harga       = Rp. " + a.pulsa10);
-                            Console.SetCursorPosition(5, 21); Console.Write("Bayar       = Rp. ");
-                            harga = Convert.ToInt32(Console.ReadLine());
-                            kembalian = harga - a.pulsa10;
-                            Console.SetCursorPosition(5, 22); Console.WriteLine("Kembalian   = Rp. " + kembalian);
-                            Console.WriteLine("\nPulsa Berhasil Diisi Silakan Dicek");
-                            Console.ReadKey();
-                            break;
-                        case '5':
-                            a.pulsa5 = 6000;
-                            Console.SetCursorPosition(5, 20); Console.WriteLine("Harga       = Rp. " + a.pulsa5);
-                            Console.SetCursorPosition(5, 21); Console.Write("Bayar       = Rp. ");
-                            harga = Convert.ToInt32(Console.ReadLine());
-                            kembalian = harga - a.pulsa5;
-                            Console.SetCursorPosition(5, 22); Console.WriteLine("Kembalian   = Rp. " + kembalian);
-                            Console.WriteLine("\nPulsa Berhasil Diisi Silakan Dicek");
-                            Console.ReadKey();
-                            break;
-                        case '0':
-                            cek2 = false;
-                            stock.utama();
-                            break;
-                        default:
-                            break;
-                    }
-            } while (cek2 == true);
+                Console.Clear();
+                Stock stock = new Stock();
+                stock.utama();
+                Console.SetCursorPosition(5, 6); Console.WriteLine("Deposit = {0}", deposit);
+                Console.SetCursorPosition(5, 9); Console.WriteLine("1.AS");
+                Console.SetCursorPosition(5, 11); Console.WriteLine("2.SIMPATI");
+                Console.SetCursorPosition(5, 13); Console.WriteLine("3.XL");
+                Console.SetCursorPosition(50, 9); Console.WriteLine("4.IM3");
+                Console.SetCursorPosition(50, 11); Console.WriteLine("5.MENTARI");
+                Console.SetCursorPosition(50, 13); Console.WriteLine("6.AXIS");
+                Console.SetCursorPosition(5, 15); Console.Write("Jenis pulsa yang dibeli : ");
+                jenisPulsa = Console.ReadLine();
+                Console.SetCursorPosition(5, 16); Console.Write("Masukkan nomer HP       : ");
+                hp = Console.ReadLine();
+                if (hp.Length <= 9 || hp.Length >= 13)
+                {
+                    Console.WriteLine("Digit Nomor min-10 max-12 digit");
+                }
+                else
+                    Console.SetCursorPosition(5, 17); Console.Write("Besar pulsa yang dibeli : Rp. ");
+                pulsaDibeli = Convert.ToInt32(Console.ReadLine());
+
+                //Seleksi harga pulsa
+                if (pulsaDibeli <= 25000)
+                { pulsaJual = pulsaDibeli + 1000; }
+                else { pulsaJual = pulsaDibeli + 500; }
+
+                //Seleksi operator
+                switch (jenisPulsa)
+                {
+                    case "1":
+                        hargaPulsa = pulsaJual;
+                        break;
+                    case "2":
+                        hargaPulsa = pulsaJual + 500;
+                        break;
+                    case "3":
+                        hargaPulsa = pulsaJual - 500;
+                        break;
+                    case "4":
+                        if (pulsaJual >= 25000)
+                        {
+                            hargaPulsa = pulsaJual - 500;
+                        }
+                        else { hargaPulsa = pulsaJual - 1000; }
+                        break;
+                    case "5":
+                        hargaPulsa = pulsaJual + 1000;
+                        break;
+                }
+
+                //Proses
+                Console.WriteLine();
+                deposit = deposit - pulsaDibeli;
+                laba = laba + (hargaPulsa - pulsaDibeli);
+
+                //sisa deposit
+                if (deposit < pulsaDibeli)
+                {
+                    Console.WriteLine("\tMaaf deposit pulsa anda tidak mencukupi transaksi ini");
+                    Console.Write("\tMasukkan tambahan deposit : Rp. ");
+                    depositTambah = Convert.ToInt32(Console.ReadLine());
+                    deposit = deposit + depositTambah;
+                    Console.WriteLine();
+                }
+
+                //Laporan
+                Console.WriteLine("\tharga jual   : Rp. {0}",
+                                 hargaPulsa.ToString());
+                Console.WriteLine("\tDeposit sisa : Rp. {0} ",
+                                 deposit.ToString());
+                Console.WriteLine("\t-----------------------------");
+                Console.WriteLine();
+                Console.Write("\tApakah ada transaksi lagi? [Y/T] : ");
+                tanyaUlang = Console.ReadLine();
+            } while (tanyaUlang.ToLower() == "y");
+            
+            Console.WriteLine();
+            Console.WriteLine("\t------------------------------");
+            Console.WriteLine("\tSisa deposit : Rp {0}", deposit);
+            Console.WriteLine("\tKeuntungan   : Rp {0}", laba);
+            Console.WriteLine("\t------------------------------");
+            Console.WriteLine();
+
+            Console.Write("Press any key to continue . . . ");
+            Console.ReadKey();
         }
     }
 }

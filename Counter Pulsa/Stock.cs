@@ -11,7 +11,6 @@ namespace Counter_Pulsa
 
         public void utama()
         {
-
             Console.WriteLine("||===========================================================================||");
             Console.WriteLine("||                                                                           ||");
             Console.WriteLine("||                      SELAMAT DATANG DI COUNTER PULSA                      ||");
@@ -23,7 +22,7 @@ namespace Counter_Pulsa
         public Stock()
         {
 
-            kartu = new List<Kartu_AS>();
+            kartu = new List<Kartu_AS>(); 
         }
      
     }
