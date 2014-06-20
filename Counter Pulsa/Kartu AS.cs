@@ -16,7 +16,7 @@ namespace Counter_Pulsa
         public int hargaPulsa;
         public int laba;
         public string hp;
-
+        
         public void KartuAS()
         {
             
@@ -42,7 +42,7 @@ namespace Counter_Pulsa
                 jenisPulsa = Console.ReadLine();
                 Console.SetCursorPosition(5, 16); Console.Write("Masukkan nomer HP       : ");
                 hp = Console.ReadLine();
-                if (hp.Length <= 9 || hp.Length >= 13)
+                if (hp.Trim().Length <= 9 || hp.Trim().Length >= 12)
                 {
                     Console.WriteLine("Digit Nomor min-10 max-12 digit");
                 }
