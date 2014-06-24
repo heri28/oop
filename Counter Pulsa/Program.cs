@@ -53,7 +53,7 @@ namespace Counter_Pulsa
                     case "2":
                         Console.Clear();
                         stock.utama();
-                        stock.isivoucer();
+                        stock.jualVoucher();
                         break;
 
                     case "3":

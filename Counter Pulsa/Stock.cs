@@ -8,6 +8,7 @@ namespace Counter_Pulsa
     class Stock
     {
         List<pulsa> pulsa;
+        List<Voucher> voucher;
 
         public void utama()
         {
@@ -21,7 +22,8 @@ namespace Counter_Pulsa
 
         public Stock()
         {
-            pulsa = new List<pulsa>(); 
+            pulsa = new List<pulsa>();
+            voucher = new List<Voucher>();
         }
 
         public void jualPulsa()
@@ -40,45 +42,25 @@ namespace Counter_Pulsa
         public void TampilPulsa()
         {
             Console.WriteLine("Terdapat beberapa transaksi");
+            Console.WriteLine("Transaksi Penjualan Pulsa");
             foreach (pulsa j in pulsa)
                 j.detailpulsa();
+            Console.WriteLine("Transaksi Penjualan Voucher Pulsa");
+            foreach (Voucher j in voucher)
+                j.detailvoucher();
         }
 
-        public void isivoucer()
+        public void jualVoucher()
         {
-            ConsoleKeyInfo jenisVoucher;
-            Random rnd = new Random();
-            int angka = rnd.Next(100000, 999999);
-            int angka1 = rnd.Next(2000000, 8888888);
-            Console.SetCursorPosition(5, 9); Console.WriteLine("1.10000");
-            Console.SetCursorPosition(5, 11); Console.WriteLine("2.20000");
-            Console.SetCursorPosition(5, 13); Console.WriteLine("3.50000");
-            Console.SetCursorPosition(50, 9); Console.WriteLine("4.100000");
-            Console.SetCursorPosition(50, 11); Console.WriteLine("5.500000");
-            Console.SetCursorPosition(50, 13); Console.WriteLine("0.KEMBALI");
-            Console.WriteLine("");
-            Console.Write("Pilihan => ");
-            jenisVoucher = Console.ReadKey();
-            Console.WriteLine("\n");
-            switch (jenisVoucher.KeyChar)
-            {
-                case '1' :
-                    Console.WriteLine("Kode voucer pulsa 10 Ribu {0}{1} ", angka, angka1);
-                    break;
-                case '2':
-                    Console.WriteLine("Kode voucer pulsa 20 Ribu {0}{1} ", angka, angka1);
-                    break;
-                case '3':
-                    Console.WriteLine("Kode voucer pulsa 50 Ribu {0}{1} ", angka, angka1);
-                    break;
-                case '4':
-                    Console.WriteLine("Kode voucer pulsa 100 Ribu {0}{1} ", angka, angka1);
-                    break;
-                case '5':
-                    Console.WriteLine("Kode voucer pulsa 500 Ribu {0}{1} ", angka, angka1);
-                    break;
-            }
-            Console.ReadKey();
+            voucher.Add(new Voucher());
+            string tmp = voucher.Last().novoucher;
+            if (voucher.Count >= 2)
+                for (int i = 0; i < voucher.Count - 1; i++)
+                    if (voucher[i].novoucher == tmp)
+                    {
+                        voucher.RemoveAt(i);
+                        break;
+                    }
         }
     }
 }
