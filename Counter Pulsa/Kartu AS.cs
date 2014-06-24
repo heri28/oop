@@ -19,9 +19,6 @@ namespace Counter_Pulsa
         
         public void KartuAS()
         {
-            
-            
-
             //input deposit
             Console.Clear();
             Console.Write("Deposit Awal : Rp. ");
