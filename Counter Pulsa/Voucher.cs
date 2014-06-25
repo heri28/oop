@@ -7,8 +7,15 @@ namespace Counter_Pulsa
 {
     class Voucher
     {
+        public enum jenisVoucher
+        {
+            nol, AS, SIMPATI, XL, IM3, MENTARI, AXIS
+        }
+
+        public jenisVoucher jenisvoucher { get; set; }
+        public int voucherdibeli {get; set;}
         public string novoucher;
-        public string jenisVoucher;
+        bool cek,cek1 = true;
 
         public Voucher()
         {
@@ -16,40 +23,52 @@ namespace Counter_Pulsa
             int angka = rnd.Next(100000000, 999999999);
             int angka1 = rnd.Next(888888888, 999999999);
             novoucher = Convert.ToString(angka + angka1 + 9999999);
-            Console.SetCursorPosition(5, 9); Console.WriteLine("1.10000");
-            Console.SetCursorPosition(5, 11); Console.WriteLine("2.20000");
-            Console.SetCursorPosition(5, 13); Console.WriteLine("3.50000");
-            Console.SetCursorPosition(50, 9); Console.WriteLine("4.100000");
-            Console.SetCursorPosition(50, 11); Console.WriteLine("5.500000");
-            Console.SetCursorPosition(50, 13); Console.WriteLine("0.KEMBALI");
-            Console.WriteLine("");
-            Console.Write("Pilihan => ");
-            jenisVoucher = Convert.ToString(Console.ReadLine());
-            Console.WriteLine("\n");
-            switch (jenisVoucher)
+            do
             {
-                case "1":
-                    Console.WriteLine("Kode voucer pulsa 10 Ribu {0}", novoucher);
-                    break;
-                case "2":
-                    Console.WriteLine("Kode voucer pulsa 20 Ribu {0}", novoucher);
-                    break;
-                case "3":
-                    Console.WriteLine("Kode voucer pulsa 50 Ribu {0}", novoucher);
-                    break;
-                case "4":
-                    Console.WriteLine("Kode voucer pulsa 100 Ribu {0}", novoucher);
-                    break;
-                case "5":
-                    Console.WriteLine("Kode voucer pulsa 500 Ribu {0}", novoucher);
-                    break;
+                cek1 = true;
+                Console.SetCursorPosition(5, 17); Console.Write("Jenis voucher yang dibeli : ");
+                jenisvoucher = (jenisVoucher)int.Parse(Console.ReadLine());
+            } while (cek1 == false);
+            if ((int)jenisvoucher != 1 && (int)jenisvoucher != 2 && (int)jenisvoucher != 3 && (int)jenisvoucher != 4
+                && (int)jenisvoucher != 5 && (int)jenisvoucher != 6)
+            {
+                cek1 = false;
             }
-            Console.ReadKey();
+            else
+            {
+                Console.WriteLine("\n");
+                do
+                {
+                    cek = true;
+                    Console.SetCursorPosition(5, 19); Console.Write("Nominal Voucher : ");
+                    voucherdibeli = Convert.ToInt32(Console.ReadLine());
+                } while (cek == false);
+                if (voucherdibeli != 500000 && voucherdibeli != 10000 && voucherdibeli != 20000
+                    && voucherdibeli != 50000 && voucherdibeli != 100000)
+                {
+                    Console.WriteLine("Voucher tidak tersedia !");
+                    Console.WriteLine("Hanya tersedia voucher 10000, 20000, 50000, 100000, 500000");
+                    cek = false;
+                }
+                else
+                {
+                    Console.WriteLine("Kode voucer {0} {1} Ribu adalah {2}", jenisvoucher, voucherdibeli, novoucher);
+                }
+            }
         }
 
         public void detailvoucher()
         {
-            Console.WriteLine("[{0}] {1}",jenisVoucher,novoucher);
+            if ((int)jenisvoucher != 1 && (int)jenisvoucher != 2 && (int)jenisvoucher != 3 && (int)jenisvoucher != 4
+                && (int)jenisvoucher != 5 && (int)jenisvoucher != 6 || voucherdibeli != 500000 && voucherdibeli != 10000
+                && voucherdibeli != 20000 && voucherdibeli != 50000 && voucherdibeli != 100000)
+            {
+                Console.Write("");
+            }
+            else
+            {
+                Console.WriteLine("[{0}] {1} {2}", jenisvoucher, voucherdibeli, novoucher);
+            }
         }
 
     }
