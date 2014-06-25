@@ -14,86 +14,110 @@ namespace Counter_Pulsa
         public int hargaPulsa = 0;
         public int laba = 0;
         public string hp { get; set; }
-        ConsoleKeyInfo jenisPulsa;
-        bool cek2,cek3 = true;
+        public jenisPulsa jenispulsa { get; set; }
+        bool cek1, cek2,cek3 = true;
+
+        public enum jenisPulsa
+        {
+            nol, AS, SIMPATI, XL, IM3, MENTARI, AXIS
+        }
 
 
         public pulsa()
         {
-            Console.SetCursorPosition(5, 17); Console.Write("Jenis pulsa yang dibeli : ");
-            jenisPulsa = Console.ReadKey();
             do
             {
-                cek2 = true;
-                Console.SetCursorPosition(5, 19); Console.Write("Masukkan Nomor HP : ");
-                hp = Console.ReadLine();
-            } while (cek2 == false);
-            if (hp.Length <= 9 || hp.Length >= 13)
+                cek1 = true;
+                Console.SetCursorPosition(5, 17); Console.Write("Jenis pulsa yang dibeli : ");
+                jenispulsa = (jenisPulsa)int.Parse(Console.ReadLine());
+            } while (cek1 == false);
+            if ((int)jenispulsa == 0)
             {
-                Console.WriteLine("\tNomor HP error, Periksa Nomor HP");
+                cek1 = false;
             }
+
             else
             {
-                 do
+                do
                 {
-                 cek3 = true;
-                Console.SetCursorPosition(5, 21); Console.Write("Nominal Pulsa : ");
-                pulsaDibeli = Convert.ToInt32(Console.ReadLine());
-                } while (cek3 == false);
-                if (pulsaDibeli != 5000 && pulsaDibeli != 10000 && pulsaDibeli != 20000
-                    && pulsaDibeli != 50000 && pulsaDibeli != 100000)
+                    cek2 = true;
+                    Console.SetCursorPosition(5, 19); Console.Write("Masukkan Nomor HP : ");
+                    hp = Console.ReadLine();
+                } while (cek2 == false);
+                if (hp.Length <= 9 || hp.Length >= 13 || hp == null)
                 {
-                    Console.WriteLine("Pulsa tidak tersedia !");
-                    Console.WriteLine("Hanya tersedia pulsa 5000, 10000, 20000, 50000, 100000");
-                    cek3 = false;
+                    Console.WriteLine("\tNomor HP error, Periksa Nomor HP");
                 }
                 else
                 {
-                    if (pulsaDibeli <= 25000)
-                    { pulsaJual = pulsaDibeli + 1000; }
-                    else { pulsaJual = pulsaDibeli + 500; }
-
-                    switch (jenisPulsa.KeyChar)
+                    do
                     {
+<<<<<<< HEAD
 
                         case '1':
-                            hargaPulsa = pulsaJual;
-                            break;
-                        case '2':
-                            hargaPulsa = pulsaJual + 500;
-                            break;
-                        case '3':
-                            hargaPulsa = pulsaJual + 500;
-                            break;
-                        case '4':
-                            hargaPulsa = pulsaJual - 500;
-                            break;
-                        case '5':
-                            if (pulsaJual >= 25000)
-                            {
-                                hargaPulsa = pulsaJual - 500;
-                            }
-                            else { hargaPulsa = pulsaJual - 1000; }
-                            break;
-                        case '6':
-                            hargaPulsa = pulsaJual + 1000;
-                            break;
-                        case '0':
-                            cek2 = false;
-                            break;
-                        default:
-                            break;
+=======
+                        cek3 = true;
+                        Console.SetCursorPosition(5, 21); Console.Write("Nominal Pulsa : ");
+                        pulsaDibeli = Convert.ToInt32(Console.ReadLine());
+                    } while (cek3 == false);
+                    if (pulsaDibeli != 5000 && pulsaDibeli != 10000 && pulsaDibeli != 20000
+                        && pulsaDibeli != 50000 && pulsaDibeli != 100000)
+                    {
+                        Console.WriteLine("Pulsa tidak tersedia !");
+                        Console.WriteLine("Hanya tersedia pulsa 5000, 10000, 20000, 50000, 100000");
+                        cek3 = false;
                     }
-                    Console.SetCursorPosition(5, 22); Console.WriteLine("harga jual    : {0} IDR",
-                                     hargaPulsa.ToString());
-                    Console.SetCursorPosition(5, 23); Console.WriteLine("-----------------------------");
+                    else
+                    {
+                        if (pulsaDibeli <= 25000)
+                        { pulsaJual = pulsaDibeli + 1000; }
+                        else { pulsaJual = pulsaDibeli + 500; }
+
+                        if ((int)jenispulsa == 1)
+                        {
+>>>>>>> 0ed43bea448ba41f3a854e55c50963924dfb95c9
+                            hargaPulsa = pulsaJual;
+                        }
+                        else if ((int)jenispulsa == 2)
+                        {
+                            hargaPulsa = pulsaJual + 500;
+                        }
+                        else if ((int)jenispulsa == 3)
+                        {
+                            hargaPulsa = pulsaJual + 500;
+                        }
+                        else if ((int)jenispulsa == 4)
+                        {
+                            hargaPulsa = pulsaJual + 500;
+                        }
+                        else if ((int)jenispulsa == 5)
+                        {
+                            hargaPulsa = pulsaJual + 500;
+                        }
+                        else if ((int)jenispulsa == 6)
+                        {
+                            hargaPulsa = pulsaJual + 500;
+                        }
+                        Console.SetCursorPosition(5, 22); Console.WriteLine("harga jual    : {0} IDR",
+                                         hargaPulsa.ToString());
+                        Console.SetCursorPosition(5, 23); Console.WriteLine("-----------------------------");
+                    }
                 }
             }
         }
 
         public void detailpulsa()
         {
-            Console.WriteLine("[{0}] {1}",hp, pulsaDibeli);
+            if ((int)jenispulsa != 1 && (int)jenispulsa != 2 && (int)jenispulsa != 3 && (int)jenispulsa != 4 && (int)jenispulsa != 5
+                && (int)jenispulsa != 6 || pulsaDibeli != 5000 && pulsaDibeli != 10000 && pulsaDibeli != 20000
+                        && pulsaDibeli != 50000 && pulsaDibeli != 100000 || hp == null && hp.Length <= 9 && hp.Length >= 13 && hp == null)
+            {
+                Console.Write("");
+            }
+            else
+            {
+                Console.WriteLine("{0} {1} [{2}]", jenispulsa, pulsaDibeli, hp);
+            }
         }
     }
 }
