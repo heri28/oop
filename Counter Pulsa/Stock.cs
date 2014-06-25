@@ -39,12 +39,14 @@ namespace Counter_Pulsa
                     }
         }
 
-        public void TampilPulsa()
+        public void TampilTransaksi()
         {
-            Console.WriteLine("Terdapat beberapa transaksi");
+            Console.WriteLine("Terdapat beberapa Transaksi");
+            Console.WriteLine("=====================================");
             Console.WriteLine("Transaksi Penjualan Pulsa");
             foreach (pulsa j in pulsa)
                 j.detailpulsa();
+            Console.Write("\n");
             Console.WriteLine("Transaksi Penjualan Voucher Pulsa");
             foreach (Voucher j in voucher)
                 j.detailvoucher();
