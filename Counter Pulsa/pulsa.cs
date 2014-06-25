@@ -55,6 +55,7 @@ namespace Counter_Pulsa
 
                     switch (jenisPulsa.KeyChar)
                     {
+
                         case '1':
                             hargaPulsa = pulsaJual;
                             break;
